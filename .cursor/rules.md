@@ -2,17 +2,18 @@
 ## 목적
 - 이 저장소(toss-base)는 **Apps in Toss WebView 기반 미니앱**을 **React**로 빠르게 만들기 위한 템플릿이다.
 - 사용자가 “아이디어/컨셉/기획 정보”를 주면, 그에 맞춰 **최소 기능(MVP) → 화면/흐름 → 구현 → 검증**까지 자동으로 진행한다.
-- Apps in Toss의 제약/정책/SDK 사용은 반드시 공식 문서를 기준으로 한다. 필요 시 문서 근거를 먼저 요약한 뒤 구현한다. :contentReference[oaicite:1]{index=1}
+- Apps in Toss의 제약/정책/SDK 사용은 반드시 공식 문서(https://developers-apps-in-toss.toss.im)를 기준으로 한다. 필요 시 문서 근거를 먼저 요약한 뒤 구현한다.
+- 현재 기준 스택: `@apps-in-toss/web-framework` 2.6.1, `@toss/tds-mobile` 2.4.0, `@toss/tds-mobile-ait` 2.4.0. 개발은 `granite dev`, 배포 빌드는 `ait build`, SDK 업그레이드 점검은 `npx ait migrate`.
 
 ---
 
 ## 0) 최상위 우선순위(절대 규칙)
 1. **문서 우선(@docs 우선)**
-    - Apps in Toss SDK, WebView 동작, 배포/빌드, 검수 관련 작업은 **구현 전에** 근거를 문서에서 확인하고 요약한다. :contentReference[oaicite:2]{index=2}
+    - Apps in Toss SDK, WebView 동작, 배포/빌드, 검수 관련 작업은 **구현 전에** 근거를 문서에서 확인하고 요약한다.
 2. **TDS 필수 준수(WebView 비게임 앱)**
-    - WebView 기반 비게임 미니앱은 **TDS 사용이 필수**이며, 검수 승인 기준에 포함된다. :contentReference[oaicite:3]{index=3}
-3. **Granite 빌드 산출물 경로 일치**
-    - `web.commands.build` 결과물 경로는 `granite.config.ts`의 `outdir`와 **반드시 동일**해야 한다(불일치 시 배포 실패 가능). :contentReference[oaicite:4]{index=4}
+    - WebView 기반 비게임 미니앱은 **TDS 사용이 필수**이며, 검수 승인 기준에 포함된다.
+3. **빌드 산출물 경로 일치(ait build)**
+    - `web.commands.build`(Vite) 결과물 경로는 `granite.config.ts`의 `outdir`와 **반드시 동일**해야 한다. `ait build`가 이 `outdir`를 읽어 `.ait` 아티팩트를 만들므로 불일치 시 배포 실패 가능.
 4. **작게, 빠르게, 검증 가능하게**
     - 한 번에 큰 변경 금지. 기능은 “패킷(30~60분)” 단위로 쪼개고, 각 패킷마다 완료조건(DoD)을 먼저 정의한 뒤 구현한다.
 
@@ -26,7 +27,7 @@
     - 번들/런타임 영향,
     - 제거 가능성(추후 제거 계획)
       를 함께 제시한다.
-- UI는 **TDS 컴포넌트 우선**으로 구성한다. 커스텀 UI는 TDS로 불가능한 경우에만 제한적으로 허용한다. :contentReference[oaicite:5]{index=5}
+- UI는 **TDS 컴포넌트 우선**으로 구성한다. 커스텀 UI는 TDS로 불가능한 경우에만 제한적으로 허용한다.
 - **디자인(Toss Look)**: UI/스타일 작업 시 `desigin/toss-look.md`와 `src/design/tokens.ts`를 따른다. 여백·모서리·타이포는 토큰만 사용(임의 px 하드코딩 금지). 섹션은 "제목 → 내용 → 액션" 순서, CTA 1개 명확.
 
 ---
@@ -52,8 +53,8 @@
 
 ### Step D. 코드 생성/수정(자동)
 - DoD를 만족하는 최소 변경만 수행
-- 문서/제약이 걸린 부분은 근거를 먼저 제시하고 진행 :contentReference[oaicite:6]{index=6}
-- 빌드 산출물 경로(outdir) 규칙을 깨지 않도록 설정/스크립트 유지 :contentReference[oaicite:7]{index=7}
+- 문서/제약이 걸린 부분은 근거를 먼저 제시하고 진행
+- 빌드 산출물 경로(outdir) 규칙을 깨지 않도록 설정/스크립트 유지
 
 ### Step E. 결과물 보고(자동, 매번 출력)
 - 변경 요약(3줄)
@@ -64,14 +65,14 @@
 
 ---
 
-## 3) 파일/설정 관련 규칙(Granite 포함)
+## 3) 파일/설정 관련 규칙(granite.config / ait 포함)
 - `granite.config.ts`의 `outdir`은 배포 파이프라인의 기준이다.
-    - 빌드 결과물이 다른 폴더로 떨어지지 않도록 스크립트를 맞춘다. :contentReference[oaicite:8]{index=8}
+    - 빌드 결과물이 다른 폴더로 떨어지지 않도록 스크립트를 맞춘다.
 - 빌드/배포 관련 파일 수정 시 반드시:
     - 변경 전/후 동작 차이
     - outdir 일치 여부
     - 로컬 build 결과 확인 방법
-      을 함께 기록한다. :contentReference[oaicite:9]{index=9}
+      을 함께 기록한다.
 
 ---
 
@@ -101,6 +102,6 @@
 ---
 
 ## 6) 금지 사항
-- Apps in Toss WebView/TDS/배포 경로 규칙을 무시한 구현 금지 :contentReference[oaicite:10]{index=10}
+- Apps in Toss WebView/TDS/배포 경로 규칙을 무시한 구현 금지
 - 큰 리팩토링을 기능 작업과 동시에 진행 금지(패킷 분리)
 - 근거 없는 “추정 구현” 금지(문서/샘플 확인 후 진행)

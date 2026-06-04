@@ -39,9 +39,9 @@
 
 ---
 
-## 5. Granite / WebView 점검
+## 5. 빌드(ait) / WebView 점검
 - [ ] `granite.config.ts`의 outdir 확인
-- [ ] 빌드 결과물이 올바른 경로에 생성됨
+- [ ] `ait build` 결과물(`.ait`)이 올바른 경로에 생성됨
 - [ ] WebView 로드 실패 가능성 없음
 
 ---

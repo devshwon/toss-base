@@ -1,9 +1,11 @@
 # toss-base LLM context
 Project: Apps-in-Toss web mini-app template
-Stack: React + TypeScript + (your build tool)
+Stack: React 18 + TypeScript + Vite (dev: `granite dev`, build: `ait build`)
+SDK: @apps-in-toss/web-framework 2.6.1, @toss/tds-mobile 2.4.0, @toss/tds-mobile-ait 2.4.0
+Docs: https://developers-apps-in-toss.toss.im
 Rules:
 - If work involves Apps-in-Toss SDK, policies, or constraints: use @docs first, then implement.
-- Prefer referencing apps-in-toss-examples and port the closest example.
+- Prefer referencing the official apps-in-toss examples (github.com/toss/apps-in-toss-examples) and port the closest example.
 - Always include loading/error/empty states for networked screens.
 - Never introduce new libraries unless necessary; explain why.
 Deliverables per task:

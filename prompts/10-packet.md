@@ -12,7 +12,7 @@
 - [ ] Loading / Error / Empty 상태가 구현돼 있다
 - [ ] WebView 환경에서 문제없는 구조다
 - [ ] TDS 컴포넌트를 우선 사용했다
-- [ ] Granite 빌드(outdir) 규칙을 깨지 않았다
+- [ ] `ait build`(outdir) 규칙을 깨지 않았다
 
 ---
 

@@ -1,7 +1,10 @@
 # Toss InApp 샘플 템플릿
 
 토스 WebView 미니앱을 빠르게 복제해서 쓸 수 있는 최소 템플릿입니다.
-SDK 2.x 기준(`@apps-in-toss/web-framework` 2.0.5, `ait build`)으로 맞춰져 있습니다.
+SDK 2.x 기준(`@apps-in-toss/web-framework` 2.6.1, `@toss/tds-mobile` 2.4.0, `ait build`)으로 맞춰져 있습니다.
+
+> 빌드 도구: 개발 서버는 `granite dev`, 배포 아티팩트(`.ait`) 빌드는 `ait build`로 수행합니다.
+> SDK 업그레이드 시 `npx ait migrate`로 공식 마이그레이션 적용 여부를 확인할 수 있습니다.
 
 ## 1) 가장 먼저 바꿀 값
 

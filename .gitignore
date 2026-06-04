@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+.granite/
+*.ait
+
+# logs
+*.log
+npm-debug.log*
+
+# env
+.env
+.env.local
+
+# editor / OS
+.DS_Store
+.vscode/
+.idea/

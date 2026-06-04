@@ -10,12 +10,12 @@
 ## 2. 배포/플랫폼 전제 (절대 변경 금지)
 - 플랫폼: **Apps in Toss**
 - 배포 방식: **WebView**
-- 프레임워크: **React + TypeScript**
-- 빌드 시스템: **Granite**
-- UI 시스템: **TDS 필수 사용 (비게임 WebView 앱)**
+- 프레임워크: **React + TypeScript** (`@apps-in-toss/web-framework` 2.6.1)
+- 빌드/배포 도구: **ait** (`ait build` → `.ait` 아티팩트, 개발 서버는 `granite dev`)
+- UI 시스템: **TDS 필수 사용 (비게임 WebView 앱)** — `@toss/tds-mobile` 2.4.0
 - 디자인: **Toss Look 가이드 준수** — `desigin/toss-look.md`와 `src/design/tokens.ts`를 따른다. 간격·모서리·타이포는 토큰만 사용하고, 임의 숫자(7, 10, 13px 등) 하드코딩 금지.
 
-Granite 빌드 결과물은 반드시 `granite.config.ts`의 `outdir`와 일치해야 한다.
+`ait build` 결과물은 반드시 `granite.config.ts`의 `outdir`와 일치해야 한다.
 Apps in Toss 정책/SDK/제약은 구현 전에 반드시 문서 근거를 확인한다.
 
 ---
@@ -58,7 +58,7 @@ Apps in Toss 정책/SDK/제약은 구현 전에 반드시 문서 근거를 확�
 ### Step D. 구현
 - DoD를 만족하는 최소 변경만 수행
 - TDS 우선 사용
-- Granite outdir 규칙 유지
+- `outdir` 규칙 유지(`granite.config.ts` ↔ `ait build` 산출물)
 
 ### Step E. 결과 보고
 - 변경 요약
@@ -78,7 +78,7 @@ Apps in Toss 정책/SDK/제약은 구현 전에 반드시 문서 근거를 확�
 ---
 
 ## 6. 금지 사항
-- Apps in Toss / WebView / TDS / Granite 규칙 무시
+- Apps in Toss / WebView / TDS / ait 빌드(outdir) 규칙 무시
 - 문서 근거 없는 SDK 사용
 - 한 번에 큰 기능 추가
 - MVP 단계에서 과도한 추상화
